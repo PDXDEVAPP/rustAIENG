@@ -1,0 +1,99 @@
+# Rust Ollama Enhanced Configuration v0.2.0
+
+[server]
+host = "127.0.0.1"
+port = 11435
+max_connections = 100
+request_timeout = 300
+enable_websocket = true
+websocket_path = "/ws"
+
+[storage]
+database_path = "./ollama.db"
+models_directory = "./models"
+max_model_size_gb = 10
+auto_cleanup = true
+
+[inference]
+default_temperature = 0.8
+default_top_p = 0.9
+default_top_k = 40
+default_max_tokens = 512
+default_repeat_penalty = 1.1
+enable_enhanced_inference = true
+max_concurrent_loads = 2
+model_cache_size_mb = 2048
+
+[models]
+default_models = ["llama3.2", "mistral"]
+preferred_quantization = "Q4_0"
+context_length = 4096
+max_concurrent_requests = 4
+preload_models_on_startup = false
+enable_model_prefetch = true
+
+[logging]
+level = "info"
+format = "json"
+file = "./logs/ollama.log"
+max_file_size_mb = 100
+max_files = 5
+enable_structured_logging = true
+
+[performance]
+enable_caching = true
+cache_size_mb = 512
+enable_metrics = true
+metrics_port = 9090
+gpu_memory_fraction = 0.8
+enable_profiling = false
+enable_tracing = true
+
+[api]
+enable_cors = true
+rate_limit_per_minute = 60
+max_request_size_mb = 10
+enable_streaming = true
+enable_embeddings = true
+enable_batch_processing = false
+
+[websocket]
+enabled = true
+max_connections = 1000
+heartbeat_interval = 30
+message_timeout = 300
+
+[monitoring]
+enable_prometheus = true
+enable_opentelemetry = false
+metrics_collection_interval = 30
+enable_performance_monitoring = true
+enable_resource_tracking = true
+
+[caching]
+model_cache_enabled = true
+model_cache_size_mb = 2048
+model_cache_max_models = 10
+enable_lru_eviction = true
+enable_memory_pressure_detection = true
+
+[security]
+enable_rate_limiting = true
+enable_authentication = false
+enable_https = false
+allowed_origins = ["*"]
+
+[fine_tuning]
+enable_training = false
+enable_lora = false
+default_learning_rate = 0.0001
+default_batch_size = 4
+default_epochs = 3
+validation_split = 0.1
+
+[stress_testing]
+enable_load_testing = false
+enable_benchmarking = true
+default_test_duration = 60
+default_workers = 10
+default_rps = 5

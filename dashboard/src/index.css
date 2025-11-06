@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: theme(colors.border.default);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-bg-page text-text-primary font-sans;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-default rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border-interactive;
+  }
+}
+
+@layer components {
+  .sidebar-nav-item {
+    @apply flex items-center h-11 px-4 text-text-secondary hover:text-text-primary 
+           hover:bg-white/5 transition-all duration-200 ease-out cursor-pointer;
+  }
+  
+  .sidebar-nav-item.active {
+    @apply text-text-primary bg-primary-500/10 border-l-3 border-primary-500;
+  }
+  
+  .metric-card {
+    @apply bg-bg-surface p-6 rounded-md border border-border-default 
+           hover:transform hover:-translate-y-1 hover:shadow-card-hover
+           transition-all duration-300 ease-out;
+  }
+  
+  .btn-primary {
+    @apply h-10 px-6 bg-primary-500 text-white font-semibold rounded-md
+           hover:bg-primary-500/90 hover:-translate-y-0.5 active:scale-98
+           transition-all duration-200 ease-out;
+  }
+  
+  .btn-secondary {
+    @apply h-10 px-6 bg-bg-surface text-text-primary font-semibold rounded-md
+           border border-border-default hover:border-border-interactive
+           hover:shadow-interactive transition-all duration-200 ease-out;
+  }
+  
+  .input-field {
+    @apply h-11 px-4 bg-bg-surface text-text-primary border border-border-default 
+           rounded-md focus:border-border-interactive focus:shadow-interactive
+           transition-all duration-200 ease-out;
+  }
+  
+  .chat-message-user {
+    @apply bg-bg-surface rounded-3xl rounded-br-md px-4 py-2 max-w-xs ml-auto;
+  }
+  
+  .chat-message-ai {
+    @apply bg-primary-500/10 border border-primary-500 rounded-3xl rounded-bl-md 
+           px-4 py-2 max-w-xs;
+  }
+  
+  .loading-shimmer {
+    @apply animate-pulse bg-gradient-to-r from-bg-surface via-border-default to-bg-surface
+           bg-[length:200%_100%] animate-[shimmer_1.5s_infinite];
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Focus visible for accessibility */
+.focus-visible {
+  @apply ring-2 ring-primary-500 ring-offset-2 ring-offset-bg-page;
+}
